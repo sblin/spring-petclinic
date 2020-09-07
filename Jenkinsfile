@@ -4,7 +4,7 @@ node {
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       git branch: 'main',
-            url: 'https://github.com/amitmohleji/spring-petclinic.git'
+            url: 'https://github.com/sblin/spring-petclinic'
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
@@ -14,8 +14,8 @@ node {
         sh "${mvnHome}/bin/mvn clean package -DskipTests=true -Dcheckstyle.skip"
    }
    stage('Update K8s.yaml'){
-       sh "sed -i 's/{{BUILD_NUMBER}}/$BUILD_NUMBER/g' xl-as-code/artifacts/app.yaml"
-       sh "sed -i 's/{{dockerhubuser}}/$dockerhubuser/g' xl-as-code/artifacts/app.yaml"
+       sh "sed -i.bak 's/{{BUILD_NUMBER}}/$BUILD_NUMBER/g' xl-as-code/artifacts/app.yaml && rm xl-as-code/artifacts/app.yaml.bak"
+       sh "sed -i.bak 's/{{dockerhubuser}}/$dockerhubuser/g' xl-as-code/artifacts/app.yaml && rm xl-as-code/artifacts/app.yaml.bak"
    }
    stage('Build Docker Image') {
        appimage = docker.build("$dockerhubuser/appz:$BUILD_NUMBER")
