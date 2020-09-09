@@ -26,9 +26,7 @@ node {
        }
    }
    stage('Publish'){
-       sh "wget -O xl https://dist.xebialabs.com/public/xl-cli/9.7.2/linux-amd64/xl"
-       sh "chmod 777 xl"
-       sh "./xl apply --xl-deploy-url http://xld:4516 -f xl-as-code/container-demo.yaml --values BUILD_NUMBER=$BUILD_NUMBER"
+       sh "./xlw apply --xl-deploy-url http://localhost:4516 -f xl-as-code/container-demo.yaml --values BUILD_NUMBER=$BUILD_NUMBER"
    }
         
 }
