@@ -21,7 +21,7 @@ node {
        appimage = docker.build("$dockerhubuser/appz:$BUILD_NUMBER")
    }
    stage('Push Image to Registry(dockerhub)') {
-       docker.withRegistry("", "cred") {
+       docker.withRegistry("", "dockerhub_credentials") {
            appimage.push("$BUILD_NUMBER")
        }
    }
