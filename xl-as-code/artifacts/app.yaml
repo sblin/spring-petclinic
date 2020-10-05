@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-z
+  name: petclinic-app
   namespace: petclinic
   labels:
-    app: app-z
+    app: petclinic-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app-z
+      app: petclinic-app
   template:
     metadata:
       labels:
-        app: app-z
+        app: petclinic-app
     spec:
       containers:
-      - image: {{dockerhubuser}}/appz:{{BUILD_NUMBER}}
-        name: app-z
+      - image: {{dockerhubuser}}/petclinic:{{BUILD_NUMBER}}
+        name: petclinic-app
         args:
           - "java"
           - "-jar"
@@ -28,11 +28,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-z
+  name: petclinic-app
   namespace: petclinic
 spec:
   selector: 
-    app: app-z
+    app: petclinic-app
   type: NodePort
   ports:
       - port: 8080

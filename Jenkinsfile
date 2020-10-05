@@ -18,7 +18,7 @@ node {
        sh "sed -i.bak 's/{{dockerhubuser}}/$dockerhubuser/g' xl-as-code/artifacts/app.yaml && rm xl-as-code/artifacts/app.yaml.bak"
    }
    stage('Build Docker Image') {
-       appimage = docker.build("$dockerhubuser/appz:$BUILD_NUMBER")
+       appimage = docker.build("$dockerhubuser/petclinic:$BUILD_NUMBER")
    }
    stage('Push Image to Registry(dockerhub)') {
        docker.withRegistry("", "dockerhub_credentials") {
