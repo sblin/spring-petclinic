@@ -1,15 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: app-z
+  name: petclinic-app
   namespace: petclinic
   labels:
-    app: app-z
+    app: petclinic-app
 spec:
   rules:
     - http:
        paths:
          - path:
            backend:
-             serviceName: app-z
+             serviceName: petclinic-app
              servicePort: 8080
