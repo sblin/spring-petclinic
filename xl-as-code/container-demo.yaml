@@ -17,8 +17,3 @@ spec:
     file: !file "artifacts/ingress.yaml"
     tags:
     - local
-  - name: local_petclinic_ns
-    type: k8s.NamespaceSpec
-    namespaceName: petclinic
-    tags:
-    - local
