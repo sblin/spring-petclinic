@@ -4,16 +4,16 @@ metadata:
   name: petclinic-app
   namespace: petclinic
   labels:
-    app: petclinic-app
+    run: petclinic-app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: petclinic-app
+      run: petclinic-app
   template:
     metadata:
       labels:
-        app: petclinic-app
+        run: petclinic-app
     spec:
       containers:
       - image: {{dockerhubuser}}/petclinic:{{BUILD_NUMBER}}
@@ -21,19 +21,7 @@ spec:
         args:
           - "java"
           - "-jar"
-          - "-Dspring.datasource.url=jdbc:mysql://mysql/petclinic"
-          - "-Dspring.profiles.active={{db_profile}}"
           - "petclinic.jar"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: petclinic-app
-  namespace: petclinic
-spec:
-  selector: 
-    app: petclinic-app
-  type: NodePort
-  ports:
-      - port: 8080
+        ports:
+        - containerPort: 8080
 

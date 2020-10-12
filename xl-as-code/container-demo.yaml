@@ -11,9 +11,9 @@ spec:
     file: !file "artifacts/app.yaml"
     tags:
     - local
-  - name: ingress
+  - name: service
     type: k8s.ResourcesFile
     createOrder: "63"
-    file: !file "artifacts/ingress.yaml"
+    file: !file "artifacts/service.yaml"
     tags:
     - local

@@ -3,13 +3,11 @@ kind: Ingress
 metadata:
   name: petclinic-app
   namespace: petclinic
-  labels:
-    app: petclinic-app
 spec:
   rules:
     - http:
        paths:
-         - path:
+         - path: /
            backend:
              serviceName: petclinic-app
              servicePort: 8080
