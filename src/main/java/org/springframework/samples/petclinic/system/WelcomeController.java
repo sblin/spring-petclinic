@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 class WelcomeController {
 
+	String version = "1.3";
+
 	@GetMapping("/")
 	public String welcome() {
 		return "welcome";
