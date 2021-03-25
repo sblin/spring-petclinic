@@ -17,3 +17,8 @@ spec:
     file: !file "artifacts/service.yaml"
     tags:
     - local
+  - name: minikube_petclinic_ns
+    type: k8s.NamespaceSpec
+    namespaceName: petclinic
+    tags:
+    - local
