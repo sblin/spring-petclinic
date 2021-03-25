@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: petclinic-app
   namespace: petclinic
+  labels:
+    run: petclinic-app
 spec:
   rules:
     - http:

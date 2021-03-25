@@ -17,6 +17,12 @@ spec:
     file: !file "artifacts/service.yaml"
     tags:
     - local
+  - name: ingress
+    type: k8s.ResourcesFile
+    createOrder: "64"
+    file: !file "artifacts/ingress.yaml"
+    tags:
+    - local
   - name: minikube_petclinic_ns
     type: k8s.NamespaceSpec
     namespaceName: petclinic
